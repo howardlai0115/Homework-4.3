@@ -1,0 +1,8 @@
+Diamond Table of Statistic
+cut       Count Mean_Price Median_Price SD_Price Mean_Carat
+  <ord>     <int>      <dbl>        <dbl>    <dbl>      <dbl>
+1 Fair       1610      4359.        3282     3560.      1.05 
+2 Good       4906      3929.        3050.    3682.      0.849
+3 Very Good 12082      3982.        2648     3936.      0.806
+4 Premium   13791      4584.        3185     4349.      0.892
+5 Ideal     21551      3458.        1810     3808.      0.703
