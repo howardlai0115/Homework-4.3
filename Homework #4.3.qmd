@@ -1,0 +1,92 @@
+---
+title: "Homework #4.3"
+author: "Howard Lai"
+format: typst
+editor: visual
+date: 2016-11-18
+---
+
+## Introudction
+This assignment shows the data that we create in last homework.
+
+Diamond Table of Statistic
+cut       Count Mean_Price Median_Price SD_Price Mean_Carat
+  <ord>     <int>      <dbl>        <dbl>    <dbl>      <dbl>
+1 Fair       1610      4359.        3282     3560.      1.05 
+2 Good       4906      3929.        3050.    3682.      0.849
+3 Very Good 12082      3982.        2648     3936.      0.806
+4 Premium   13791      4584.        3185     4349.      0.892
+5 Ideal     21551      3458.        1810     3808.      0.703
+
+
+This visualization is a scatter plot analyzing team performance metrics from the NCAA Women's Basketball Data Files 2026, plotting field goal attempts on the horizontal x-axis and points scored on the vertical y-axis. Semi-transparent points (alpha = 0.5) are used to manage point density and overplotting. The layout incorporates a clean minimal theme, clear axis labels, and a descriptive title following Tufte's principles of data-ink optimization.
+
+
+Function
+generate_monte_carlo_points 
+Generates a set of random (x, y) coordinates within specified user bounds for a Monte Carlo numerical integration simulation. Parameters - n_points (int) The total sample size (resolution) of random points to generate. - x_bounds (tuple) A tuple containing the (min, max) bounds for the x-axis. - y_bounds (tuple) A tuple containing the (min, max) bounds for the y-axis. Returns - pd.DataFrame A pandas DataFrame containing the generated 'x' and 'y' coordinate columns.
+
+I learned so hard about how RStudio create data by writing R function.
+
+There are some of the text that I used GenAI.
+Details Gemini
+Date 2026-11-2
+Exact Prompt
+library(tidyverse)
+
+1. Load the base CSV files assuming they are in your working directory / R Project
+teams_data <- read_csv("teams.csv")
+games_data <- read_csv("games.csv")
+team_box_data <- read_csv("team_box.csv")
+
+2. Wrangle and tidy the data
+Example wrangling workflow join team metadata with game box statistics 
+and filter/select key columns for analysis
+tidy_ncaa_data <- team_box_data 
+  left_join(teams_data, by = "team_id") 
+  select(game_id, team_id, team_name, conference, pts, fgm, fga, ast, tov) 
+  drop_na()
+
+3. Verify tidy structure
+glimpse(tidy_ncaa_data)
+
+Exact Response
+library(tidyverse)
+
+1. Load the base CSV files assuming they are in your working directory / R Project
+teams_data <- read_csv("teams.csv")
+games_data <- read_csv("games.csv")
+team_box_data <- read_csv("team_box.csv")
+
+2. Wrangle and tidy the data
+Example wrangling workflow join team metadata with game box statistics 
+and filter/select key columns for analysis
+tidy_ncaa_data <- team_box_data 
+  left_join(teams_data, by = "team_id")
+  select(game_id, team_id, team_name, conference, pts, fgm, fga, ast, tov) 
+  drop_na()
+
+3. Verify tidy structure
+glimpse(tidy_ncaa_data)
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
